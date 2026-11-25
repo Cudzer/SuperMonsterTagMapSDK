@@ -1,0 +1,49 @@
+Super Monster Tag Map SDK License
+
+Copyright (c) 2026 Cudzer. All rights reserved, except as granted below.
+
+"The SDK" means everything in this repository and in the SDK's downloads: its scripts, scenes,
+shaders, models, textures, environments, icons, documentation and every other file, and any copy
+or changed version of them.
+
+1. What you may do
+
+   You may download, open, use and change the SDK, inside the SDK, only to make, test and publish
+   maps for the game Super Monster Tag, for example on its Steam Workshop.
+
+   You may share the maps you make with it. A map package exported by the SDK names the SDK's files
+   rather than containing them, and you may share such packages freely.
+
+2. What you may not do
+
+   You may not use the SDK, or any part of it, outside the SDK or for any other purpose. In
+   particular, you may not:
+   - use any of its files (code, models, textures, shaders or anything else), whole or in part, in
+     another game, application, engine, mod or project, whether free or commercial;
+   - copy its files out of the SDK to use them anywhere else;
+   - sell, sublicense or redistribute the SDK or any part of it on its own, or include it in
+     anything other than a Super Monster Tag map made with the SDK as described above.
+
+3. Your own work
+
+   The maps you make, and any models, textures and other files you create yourself and add to
+   them, are yours. This license gives no rights in them to anyone else, and claims none for
+   the copyright holder.
+
+4. Other licenses
+
+   The Bungee font (assets/fonts/Bungee-Regular.ttf) is not covered by this license. It is by The
+   Bungee Project Authors and is licensed under the SIL Open Font License 1.1, in
+   assets/fonts/OFL.txt.
+
+   The SDK does not include the Godot engine, which you download separately under its own license.
+
+5. Ending
+
+   If you break these terms, your permission to use the SDK ends at once.
+
+6. No warranty
+
+   THE SDK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT
+   SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT
+   OF OR IN CONNECTION WITH THE SDK OR ITS USE.

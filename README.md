@@ -71,3 +71,10 @@ The export lists anything it had to leave out, and why.
 
 Download the new SDK, then copy your `maps/<id>/` folders and your model folders into it. Point
 My Maps at the new SDK's `exports` folder.
+
+## License
+
+The SDK may only be used, inside the SDK, to make maps for Super Monster Tag: none of its files may
+be used in anything else. The maps you make, and your own models in them, are yours. See `LICENSE`
+for the full terms. The Bungee font is under its own license, the SIL Open Font License
+(`assets/fonts/OFL.txt`).
