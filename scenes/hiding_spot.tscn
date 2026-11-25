@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bp4h7n4mnraq0"]
+
+[ext_resource type="Script" path="res://scripts/hiding_spot.gd" id="1_spot"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_inside"]
+height = 2.0
+radius = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leaves"]
+albedo_color = Color(0.4863, 0.6706, 0.3412, 1)
+rim_enabled = true
+rim = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_leaves"]
+material = SubResource("StandardMaterial3D_leaves")
+radius = 0.75
+height = 1.4
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leaves_dark"]
+albedo_color = Color(0.3725, 0.5451, 0.2588, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_leaves_dark"]
+material = SubResource("StandardMaterial3D_leaves_dark")
+radius = 0.8
+height = 1.5
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_straw"]
+albedo_color = Color(0.7882, 0.6588, 0.4078, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_stack"]
+material = SubResource("StandardMaterial3D_straw")
+top_radius = 0.85
+bottom_radius = 1.15
+height = 1.5
+radial_segments = 14
+
+[sub_resource type="SphereMesh" id="SphereMesh_stack_top"]
+material = SubResource("StandardMaterial3D_straw")
+radius = 0.86
+height = 1.0
+radial_segments = 14
+rings = 6
+
+[node name="HidingSpot" type="Area3D"]
+script = ExtResource("1_spot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_inside")
+
+[node name="Bush" type="Node3D" parent="."]
+
+[node name="LeavesCenter" type="MeshInstance3D" parent="Bush"]
+transform = Transform3D(1.3, 0, 0, 0, 1.2, 0, 0, 0, 1.3, 0, 1.05, 0)
+mesh = SubResource("SphereMesh_leaves_dark")
+
+[node name="LeavesLeft" type="MeshInstance3D" parent="Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.75, 0.3)
+mesh = SubResource("SphereMesh_leaves")
+
+[node name="LeavesRight" type="MeshInstance3D" parent="Bush"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.8, -0.2)
+mesh = SubResource("SphereMesh_leaves")
+
+[node name="LeavesFront" type="MeshInstance3D" parent="Bush"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.1, 0.65, 0.75)
+mesh = SubResource("SphereMesh_leaves")
+
+[node name="LeavesTop" type="MeshInstance3D" parent="Bush"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -0.15, 1.75, -0.1)
+mesh = SubResource("SphereMesh_leaves")
+
+[node name="Haystack" type="Node3D" parent="."]
+visible = false
+
+[node name="Stack" type="MeshInstance3D" parent="Haystack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CylinderMesh_stack")
+
+[node name="StackTop" type="MeshInstance3D" parent="Haystack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("SphereMesh_stack_top")
+
+[node name="Rustle" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+unit_size = 6.0
+max_distance = 50.0
+bus = &"SFX"

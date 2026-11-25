@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MapInfo" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/map_info.gd" id="1_i387s"]
+[ext_resource type="Texture2D" path="res://maps/twin_peaks/thumbnail.png" id="2_yr6jk"]
+
+[resource]
+script = ExtResource("1_i387s")
+display_name = "Twin Peaks"
+description = "Two floating peaks and the islands between them: a ramp, a zipline, a grind rail, an aimed spring pad and a teleporter. The Map SDK's example map."
+scene = "res://maps/twin_peaks/twin_peaks.tscn"
+thumbnail = ExtResource("2_yr6jk")
+sort_order = 10
+author = "Super Monster Tag"
+ambience = "islands"

@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/teleporter.gd" id="1_teleporter"]
+[ext_resource type="Shader" path="res://assets/shaders/teleporter.gdshader" id="2_disc"]
+[ext_resource type="Shader" path="res://assets/shaders/teleporter_beam.gdshader" id="3_beam"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_area"]
+height = 2.5
+radius = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_base"]
+albedo_color = Color(0.1176, 0.2745, 0.2667, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_base"]
+material = SubResource("StandardMaterial3D_base")
+top_radius = 1.5
+bottom_radius = 1.6
+height = 0.12
+radial_segments = 32
+rings = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_disc"]
+shader = ExtResource("2_disc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_disc"]
+material = SubResource("ShaderMaterial_disc")
+size = Vector2(2.6, 2.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_beam"]
+render_priority = 1
+shader = ExtResource("3_beam")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_beam"]
+material = SubResource("ShaderMaterial_beam")
+top_radius = 1.2
+bottom_radius = 1.2
+height = 2.5
+radial_segments = 32
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="Teleporter" type="Area3D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_teleporter")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("CylinderShape3D_area")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06, 0)
+mesh = SubResource("CylinderMesh_base")
+
+[node name="Surface" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_disc")
+
+[node name="Beam" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_beam")

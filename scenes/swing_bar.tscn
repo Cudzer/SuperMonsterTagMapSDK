@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/swing_bar.gd" id="1_swing_bar"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_grab"]
+resource_local_to_scene = true
+height = 3.0
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bar"]
+albedo_color = Color(1, 0.7843, 0.3412, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bar"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_bar")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 3.0
+
+[node name="SwingBar" type="Area3D"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_swing_bar")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_grab")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_bar")

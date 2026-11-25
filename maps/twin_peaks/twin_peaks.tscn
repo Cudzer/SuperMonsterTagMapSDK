@@ -1,0 +1,250 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="Script" path="res://scripts/game_map.gd" id="1_yefrm"]
+[ext_resource type="Environment" path="res://assets/environments/sky.tres" id="2_5prma"]
+[ext_resource type="Script" path="res://scripts/kit/kit_island.gd" id="3_87icf"]
+[ext_resource type="Script" path="res://scripts/kit/kit_box.gd" id="4_ybbf6"]
+[ext_resource type="Script" path="res://scripts/kit/kit_stairs.gd" id="5_b81qi"]
+[ext_resource type="Script" path="res://scripts/kit/kit_cylinder.gd" id="6_iujo8"]
+[ext_resource type="Script" path="res://scripts/zipline.gd" id="7_gdbnn"]
+[ext_resource type="Script" path="res://scripts/grind_rail.gd" id="8_xsn55"]
+[ext_resource type="PackedScene" path="res://scenes/spring_pad.tscn" id="9_c3oaf"]
+[ext_resource type="Script" path="res://scripts/spring_pad.gd" id="10_sdeo8"]
+[ext_resource type="PackedScene" path="res://scenes/speed_boost_pad.tscn" id="11_1qnvu"]
+[ext_resource type="Script" path="res://scripts/speed_boost_pad.gd" id="12_qmhhb"]
+[ext_resource type="PackedScene" path="res://scenes/updraft_fan.tscn" id="13_12ted"]
+[ext_resource type="Script" path="res://scripts/updraft_fan.gd" id="14_7gpov"]
+[ext_resource type="PackedScene" path="res://scenes/teleporter.tscn" id="15_5e3rp"]
+[ext_resource type="Script" path="res://scripts/teleporter.gd" id="16_1fdmg"]
+[ext_resource type="PackedScene" path="res://scenes/hiding_spot.tscn" id="17_rqbhs"]
+[ext_resource type="Script" path="res://scripts/hiding_spot.gd" id="18_ar8gu"]
+
+[node name="TwinPeaks" type="Node3D"]
+script = ExtResource("1_yefrm")
+spawn_radius = 5.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_5prma")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.81915206, -0.43938506, 0.36868784, 0, 0.64278764, 0.76604444, -0.57357645, -0.62750685, 0.5265408, 0, 20, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 120.0
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="WestPeak" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -2, 0)
+script = ExtResource("3_87icf")
+radius = 14.0
+rock_depth = 12.0
+propeller = true
+waterfall = true
+waterfall_angle = 270.0
+debris = true
+color = 3
+
+[node name="EastPeak" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 4, 0)
+script = ExtResource("3_87icf")
+radius = 12.0
+propeller = true
+crystals = true
+crystal_color = 7
+color = 9
+
+[node name="Nest" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -24)
+script = ExtResource("3_87icf")
+radius = 7.0
+rock_depth = 7.0
+propeller = true
+crystals = true
+crystal_color = 12
+color = 11
+
+[node name="SouthRock" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+script = ExtResource("3_87icf")
+radius = 6.0
+rock_depth = 6.0
+propeller = true
+debris = true
+color = 10
+
+[node name="TheRamp" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0, -0.2631174, -0.9647638, 0, 0.9647638, -0.2631174, 1, 0, 0, 1.1315587, 2.5176182, 0)
+script = ExtResource("4_ybbf6")
+size = Vector3(4, 0.5, 24)
+color = 8
+
+[node name="NestBridge" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(0.70710677, -0.15968627, -0.68883985, 0, 0.9741666, -0.22583048, 0.7071068, 0.15968625, 0.6888398, -9.445282, 1.0129167, -14.554717)
+script = ExtResource("4_ybbf6")
+size = Vector3(4, 0.5, 14.5)
+color = 8
+
+[node name="Stone1" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.835366, 0.16666669, 15.205791)
+script = ExtResource("3_87icf")
+radius = 2.0
+thickness = 0.5
+rock_depth = 2.5
+mushrooms = false
+color = 1
+
+[node name="Stone2" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1670732, 0.8333334, 21.041159)
+script = ExtResource("3_87icf")
+radius = 2.0
+thickness = 0.5
+rock_depth = 2.5
+mushrooms = false
+color = 1
+
+[node name="Tower" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 6, -6)
+script = ExtResource("4_ybbf6")
+size = Vector3(4, 4, 4)
+
+[node name="TowerStairs" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 6, -1)
+script = ExtResource("5_b81qi")
+size = Vector3(3, 4, 6)
+color = 8
+
+[node name="Pillar" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, 4)
+script = ExtResource("6_iujo8")
+radius = 2.0
+height = 8.0
+color = 4
+
+[node name="PeakZip" type="Area3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 10, -6)
+script = ExtResource("7_gdbnn")
+end_point = Vector3(-50, -10, 0)
+
+[node name="PowerLine" type="Area3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 6, 9)
+script = ExtResource("8_xsn55")
+end_point = Vector3(-18.5, -4, 18.5)
+
+[node name="NestPad" type="Area3D" parent="Geometry" instance=ExtResource("9_c3oaf")]
+transform = Transform3D(-0.8758383, 0.2768107, -0.3953267, 0, 0.81915206, 0.57357645, 0.48260477, 0.50236017, -0.7174447, 2.5, 3, -21.5)
+collision_layer = 0
+monitorable = false
+script = ExtResource("10_sdeo8")
+launch_speed = 22.46479379603257
+keep_momentum = false
+aimed = true
+aim_target = Vector3(16, 6, 3)
+
+[node name="RampBoost" type="Area3D" parent="Geometry" instance=ExtResource("11_1qnvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+collision_layer = 0
+monitorable = false
+script = ExtResource("12_qmhhb")
+
+[node name="PillarFan" type="Area3D" parent="Geometry" instance=ExtResource("13_12ted")]
+transform = Transform3D(1, 0, 0, 0, 0.99026805, -0.1391731, 0, 0.1391731, 0.99026805, -34, 0, 0.6)
+script = ExtResource("14_7gpov")
+lift_speed = 9.0
+
+[node name="SouthDoor" type="Area3D" parent="Geometry" instance=ExtResource("15_5e3rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 32.5)
+collision_layer = 0
+monitorable = false
+script = ExtResource("16_1fdmg")
+partner = NodePath("../NestDoor")
+
+[node name="NestDoor" type="Area3D" parent="Geometry" instance=ExtResource("15_5e3rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -28)
+collision_layer = 0
+monitorable = false
+script = ExtResource("16_1fdmg")
+
+[node name="BushWest" type="Area3D" parent="Geometry" instance=ExtResource("17_rqbhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 8)
+script = ExtResource("18_ar8gu")
+
+[node name="BushNorth" type="Area3D" parent="Geometry" instance=ExtResource("17_rqbhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -10)
+script = ExtResource("18_ar8gu")
+
+[node name="BushEast" type="Area3D" parent="Geometry" instance=ExtResource("17_rqbhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 6, 6)
+script = ExtResource("18_ar8gu")
+
+[node name="BushNest" type="Area3D" parent="Geometry" instance=ExtResource("17_rqbhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -28)
+script = ExtResource("18_ar8gu")
+
+[node name="Haystack" type="Area3D" parent="Geometry" instance=ExtResource("17_rqbhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 32.5)
+script = ExtResource("18_ar8gu")
+style = 1
+
+[node name="SpectatorCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.73480344, 0.67828006, 0, -0.67828006, 0.73480344, 0, 48, 52)
+fov = 60.0
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 0)
+
+[node name="CoinSpawnPoints" type="Node3D" parent="."]
+
+[node name="Coin1" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+
+[node name="Coin2" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -12)
+
+[node name="Coin3" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -4)
+
+[node name="Coin4" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 8, 4)
+
+[node name="Coin5" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 10, -7)
+
+[node name="Coin6" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 6, -8)
+
+[node name="Coin7" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 6, 4)
+
+[node name="Coin8" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 6, 6)
+
+[node name="Coin9" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -24)
+
+[node name="Coin10" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -25)
+
+[node name="Coin11" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 30.5)
+
+[node name="Coin12" type="Marker3D" parent="CoinSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, 29)
+
+[node name="ButtonSpawnPoints" type="Node3D" parent="."]
+
+[node name="Button1" type="Marker3D" parent="ButtonSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -12)
+
+[node name="Button2" type="Marker3D" parent="ButtonSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 6, -6)
+
+[node name="Button3" type="Marker3D" parent="ButtonSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 27)
+
+[node name="BaseSpawnPoints" type="Node3D" parent="."]
+
+[node name="Base1" type="Marker3D" parent="BaseSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 9.5)
+
+[node name="Base2" type="Marker3D" parent="BaseSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 6, 5)

@@ -1,0 +1,39 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dsggagk4wbqri"]
+
+[ext_resource type="Shader" uid="uid://sfxw4ppy5eat" path="res://assets/shaders/cartoon_sky.gdshader" id="1_sky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sunset"]
+shader = ExtResource("1_sky")
+shader_parameter/zenith_color = Color(0.22, 0.2, 0.47, 1)
+shader_parameter/sky_color = Color(0.56, 0.36, 0.6, 1)
+shader_parameter/horizon_color = Color(1, 0.63, 0.43, 1)
+shader_parameter/cloud_color = Color(1, 0.78, 0.62, 1)
+shader_parameter/cloud_shade_color = Color(0.82, 0.47, 0.57, 1)
+shader_parameter/sea_color = Color(0.98, 0.66, 0.54, 1)
+shader_parameter/sea_shade_color = Color(0.75, 0.45, 0.53, 1)
+shader_parameter/deep_color = Color(0.48, 0.32, 0.52, 1)
+shader_parameter/sun_color = Color(1, 0.86, 0.56, 1)
+shader_parameter/cloud_coverage = 0.55
+shader_parameter/sea_coverage = 0.46
+shader_parameter/cloud_scale = 1.2
+shader_parameter/cloud_speed = 0.004
+shader_parameter/shade_offset = 0.09
+shader_parameter/sun_size = 0.075
+shader_parameter/star_amount = 0.0
+shader_parameter/star_color = Color(1, 0.95, 0.82, 1)
+shader_parameter/sun_halo = 0.35
+
+[sub_resource type="Sky" id="Sky_sunset"]
+sky_material = SubResource("ShaderMaterial_sunset")
+radiance_size = 1
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_sunset")
+ambient_light_color = Color(0.78, 0.64, 0.62, 1)
+ambient_light_sky_contribution = 0.3
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(1, 0.63, 0.43, 1)
+fog_density = 0.004
+fog_sky_affect = 0.0

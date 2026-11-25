@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hj86y3elflmo"]
+
+[ext_resource type="Texture2D" uid="uid://bg6nr3axm0lhr" path="res://assets/textures/platform_4x4_ColorPalleteForLevelProps.png" id="1_2dfrx"]
+
+[resource]
+resource_name = "candy"
+cull_mode = 2
+albedo_texture = ExtResource("1_2dfrx")
+roughness = 0.45
+rim_enabled = true
+rim = 0.3
+texture_filter = 1

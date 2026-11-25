@@ -1,0 +1,29 @@
+; The Super Monster Tag Map SDK, made by tools/sdk/build_sdk.ps1 in the game's repo.
+
+config_version=5
+
+[application]
+
+config/name="Super Monster Tag Map SDK"
+config/description="Make maps for Super Monster Tag, and playtest and publish them."
+config/version="1.0.0"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://icon.png"
+
+[autoload]
+
+Settings="*res://sdk/stubs/settings.gd"
+Transition="*res://sdk/stubs/transition.gd"
+Sound="*res://sdk/stubs/sound.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/level_tools/plugin.cfg")
+[layer_names]
+
+3d_physics/layer_4="swing_bars"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0706, 0.1608, 0.1647, 1)
+
